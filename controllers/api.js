@@ -1,8 +1,5 @@
 const Product = require('../models/product');
 
-// exports.getAddProduct = (req, res) => {
-// 	res.send(`Product Successfully Added: ${req.body.productId}`);
-// };
 exports.getProducts = (req, res) => {
 	Product.find()
 		.then((products) => {
@@ -42,7 +39,6 @@ exports.postAddProduct = (req, res) => {
 	});
 	product.save()
 		.then((result) => {
-			// console.log('Created Product');
 			res.send(result);
 		})
 		.catch((err) => {
@@ -67,34 +63,10 @@ exports.putEditProduct = (req, res) => {
 		return product.save();
 	})
 		.then((product) => {
-			// console.log('UPDATED PRODUCT!');
 			res.send(product);
 		})
 		.catch((err) => res.send(err.message));
 };
-
-// exports.putEditProduct = (req, res) => {
-// 	const updatedProductCategory = req.body.productCategory;
-// 	const prodId = req.body.productId;
-// 	const updatedTitle = req.body.title;
-// 	const updatedPrice = req.body.price;
-// 	const updatedImageUrl = req.body.imageUrl;
-// 	const updatedDesc = req.body.description;
-//
-// 	Product.findById(prodId).then((product) => {
-// 		product.productCategory = updatedProductCategory;
-// 		product.title = updatedTitle;
-// 		product.price = updatedPrice;
-// 		product.description = updatedDesc;
-// 		product.imageUrl = updatedImageUrl;
-// 		return product.save();
-// 	})
-// 		.then((product) => {
-// 			// console.log('UPDATED PRODUCT!');
-// 			res.send(product);
-// 		})
-// 		.catch((err) => res.send(err.message));
-// };
 
 exports.postDeleteProduct = (req, res) => {
 	const prodId = req.body.productId;
