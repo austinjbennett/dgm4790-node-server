@@ -10,13 +10,13 @@ const router = express.Router();
 // /api/products => GET
 router.get('/products', apiController.getProducts);
 router.get('/product/:productId', apiController.getProduct);
-
+router.get('/products/category/:productCategory', apiController.getProductsByCategory);
 // /api/add-product => POST
 router.post('/add-product', apiController.postAddProduct);
 
 // router.get('/edit-product/:productId', apiController.getEditProduct);
 
-router.post('/edit-product', apiController.postEditProduct);
+router.put('/edit-product', apiController.putEditProduct);
 // router.put('/edit-product', apiController.putEditProduct);
 
 router.post('/delete-product', apiController.postDeleteProduct);

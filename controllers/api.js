@@ -20,6 +20,15 @@ exports.getProduct = (req, res) => {
 		.catch((err) => res.send(err));
 };
 
+exports.getProductsByCategory = (req, res) => {
+	const category = req.params.productCategory;
+	Product.find({"productCategory": category})
+		.then((products) => {
+			res.send(products);
+		})
+		.catch((err) => res.send(err));
+};
+
 exports.postAddProduct = (req, res) => {
 	const {
 		productCategory,
@@ -41,9 +50,9 @@ exports.postAddProduct = (req, res) => {
 		});
 };
 
-exports.postEditProduct = (req, res) => {
-	const updatedProductCategory = req.body.productCategory;
+exports.putEditProduct = (req, res) => {
 	const prodId = req.body.productId;
+	const updatedProductCategory = req.body.productCategory;
 	const updatedTitle = req.body.title;
 	const updatedPrice = req.body.price;
 	const updatedImageUrl = req.body.imageUrl;
